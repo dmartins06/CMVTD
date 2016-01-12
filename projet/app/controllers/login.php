@@ -39,7 +39,7 @@ class login extends CI_Controller
                {
                     //check if username and password is correct
                     $usr_resultprof = $this->login_model->get_prof($username, $password);
-					$usr_resultetu = $this->login_model->get_etu($username, $password);
+				$usr_resultetu = $this->login_model->get_etu($username, $password);
 
                     
 				 if ($usr_resultetu > 0) 
@@ -51,9 +51,8 @@ class login extends CI_Controller
                          $query = $this->infoUser_model->get_infouser($username, $password);
                          foreach($query->result() as $ligne)
                          {
-                              $this->session->set_userdata('prenom',$ligne->prenom);
-                              $this->session->set_userdata('nom',$ligne->nom);
-                              $this->session->set_userdata('semestre',$ligne->semestre);
+                              $this->session->set_userdata('prenom',$ligne->prenomEtudiant);
+                              $this->session->set_userdata('nom',$ligne->nomEtudiant);
                          }
                          redirect("Accueil");
                     }
@@ -63,14 +62,8 @@ class login extends CI_Controller
 						 $this->session->set_userdata('username', $username);
 						 $this->session->set_userdata('loginuser', TRUE);
 						 $this->session->set_userdata('prof', TRUE);
-                         $query = $this->infoUser_model->get_infouser($username, $password);
 
-                         foreach($query->result() as $ligne)
-                         {
-                              $this->session->set_userdata('prenom',$ligne->prenom);
-                              $this->session->set_userdata('nom',$ligne->nom);
-                              $this->session->set_userdata('semestre',$ligne->semestre);
-                         }
+                       
                          redirect("Accueil");
                     }
                     else

@@ -13,14 +13,14 @@ class login_model extends CI_Model
      //get the username & password from tbl_usrs
      function get_prof($usr, $pwd)
      {
-          $sql = "select * from tbl_usrs where username = '" . $usr . "' and password = '" . md5($pwd) . "' and status = 'prof'";
+          $sql = "select * from UTILISATEUR where numeroLogin = '" . $usr . "' and password = '" . md5($pwd) . "' and statut = 'professeur'";
           $query = $this->db->query($sql);
           return $query->num_rows();
      }
 	 
 	  function get_etu($usr, $pwd)
      {
-          $sql = "select * from tbl_usrs where username = '" . $usr . "' and password = '" . md5($pwd) . "' and status = 'etu'";
+          $sql = "select * from UTILISATEUR where numeroLogin = '" . $usr . "' and password = '" . md5($pwd) . "' and statut= 'etudiant'";
           $query = $this->db->query($sql);
           return $query->num_rows();
      }

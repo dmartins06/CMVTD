@@ -60,9 +60,10 @@ $(document).ready(function()
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <h1>Projet tuteurés</h1>
-                            <span>Université Lyon I - Accueil étudiant - <?php echo $this->session->userdata('nom') ?> <?php echo $this->session->userdata('prenom') ?> - <a href="<?php echo site_url('login/deconnexion') ;?>">Déconnexion</a></span>
+                            <h1>Projet tuteurés </h1>
+                            <span>Université Lyon I - Accueil étudiant - <?php echo $this->session->userdata('nom') ?> <?php echo $this->session->userdata('prenom') ?> - <a href="<?php echo site_url('Login/deconnexion') ;?>">Déconnexion</a></span>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -72,29 +73,30 @@ $(document).ready(function()
         
         <!-- Start Main Body Section -->
         <div class="mainbody-section text-center">
+<?php echo $this->session->flashdata('msgg'); ?>
             <div class="container">
                 <div class="row">
                     
                     <div class="col-md-3">
                         
                         <div class="menu-item blue">
-                            <a href="#feature-modal" data-toggle="modal">
+                            <a href="<?php echo ''.base_url(). 'Etudiant/listeProjet' ;?>" data-toggle="modal">
 								<i class="fa fa-bars"></i>
-                                <p>Liste de projets</p>
+                                <p>Liste de projets disponibles</p>
                             </a>
                         </div>
                         
                         <div class="menu-item green">
-                            <a href="#portfolio-modal" data-toggle="modal">
+                            <a href="<?php echo ''.base_url(). 'Etudiant/voirDemande' ;?>" data-toggle="modal">
                                 <i class="fa fa-file-text-o"></i>
-                                <p>Mes projets demandé</p>
+                                <p>Mes projets demandés</p>
                             </a>
                         </div>
                         
                         <div class="menu-item light-red">
                             <a href="#about-modal" data-toggle="modal">
 								<i class="fa fa-users"></i>
-                                <p>Liste des étudiants sans projet</p>
+                                <p>Créer son groupe</p>
                             </a>
                         </div>
                         
@@ -142,7 +144,7 @@ $(document).ready(function()
                             
                             <div class="col-md-6">
                                 <div class="menu-item light-orange responsive-2">
-                                    <a href="#team-modal" data-toggle="modal">
+                                    <a href="<?php echo ''.base_url(). 'Etudiant/voirNote' ;?>" data-toggle="modal">
                                       <i class="fa fa-graduation-cap"></i>
 
                                         <p>Notes</p>
@@ -164,7 +166,7 @@ $(document).ready(function()
                         </div>
                         
                         <div class="menu-item color">
-                            <a href="#testimonial-modal" data-toggle="modal">
+                            <a href="<?php echo ''.base_url(). 'Etudiant/proposerProjet' ;?>" data-toggle="modal">
                                 <i class="fa fa-comments"></i>
                                 <p>Proposer un projet</p>
                             </a>

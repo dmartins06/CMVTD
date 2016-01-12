@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'siteptut',
+	'hostname' => 'mysql-projetcpoa.alwaysdata.net',
+	'username' => '116682',
+	'password' => 'Maxoupic',
+	'database' => 'projetcpoa_ptut',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

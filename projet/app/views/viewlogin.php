@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-bottom">
 						<?php	 $attributes = array("class" => "login-form", "id" => "loginform", "name" => "loginform");
-									echo form_open("login/index", $attributes);?>
+									echo form_open("Login/index", $attributes);?>
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Numéro Etudiant/Professeur</label>
 			                        	<input type="text" placeholder="Numéro Etudiant/Professeur..." class="form-username form-control"  id="txt_username" name="txt_username" >
