@@ -10,19 +10,5 @@ class Etu_models extends CI_Model
           parent::__construct();
      }
 
-     function get_allEtu()
-     {
-          
-     }
-	 
-	  function get_noProjectEtu()
-     {
-         
-     }
-
-      function get_infoEtu($id)
-     {
-         
-     }
    
 }?>

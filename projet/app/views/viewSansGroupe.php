@@ -6,7 +6,7 @@
 -->
 <html>
   <head>
-    <title>Projet</title>
+    <title>Gestion groupe</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -25,17 +25,16 @@
             <div id="logo">
               <span class="image avatar48"><img src="<?php echo ''.base_url().'assets/img/avatar.png';?>" alt="" /></span>
               <h1 id="title">Etudiant</h1>
-              <p>Gestion</p>          
-                    
+              <p>Gestion groupe</p>       
             </div>
 
           <!-- Nav -->
             <nav id="nav">
               
               <ul>
-                              <li><a href="" id="portfolio-link" ><span class="icon fa-user">Proposer un projet</span></a></li>
+                <li><a href="" id="portfolio-link" ><span class="icon fa-user">Creer son groupe</span></a></li>    
                  <li><a href="<?php echo ''.base_url(). 'Accueil' ;?>" id="top-link" ><span class="icon fa-home">Accueil</span></a></li>
-              
+          
               </ul>
             </nav>
 
@@ -49,22 +48,18 @@
         <!-- Intro -->
           <section id="top" class="three">
             <div class="container">
+           <div style="border:groove">
 
-                        <h3>Proposer votre projet</h3>         <br><br><br>         
- 
+                    <form action="<?php echo ''.base_url(). 'Etudiant/creerGroupe' ;?>" method="post">
+                            <p>Vous pouvez creer votre groupe vous même, ou attendre qu'un de vos camarade vous ajoute au siens :</p>
+                            <label><center>Nom du groupe à créer :</center></label>          
+                        <input type="groupe" name="groupe" /> <br>    <br>   
+                  <input type="submit" value="Creer son groupe" name="valider" />
+                   </form>            
 
-              <form action="<?php echo '' . base_url() . 'Etudiant/rentreProjet';?>" method="post">
-                     Nom projet
-                     <input type="text" name="nomProjet" />
-                    Description projet   
-                    <input type="text" name="description" />             
-                     </br>                              
-                     <input type="submit" value="Valider" name="inscription" />
-                    </br>
-               </div>
-               </form>   
-               </div>
-               </form>    
+             </br></br>
+          </div>
+
             </div>
           </section>
 

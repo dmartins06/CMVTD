@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -54,14 +54,14 @@ $(document).ready(function()
     return null;
     }
 
-    var cook = readCookie("cook");
+    var cook = readCookie("cookfin");
     if (cook == null)
     {
          $("#id-popup").modal("show");// affiche la popup au chargement de la page
 
         var today = new Date(), expires = new Date();
         expires.setTime(today.getTime() + (365*24*60*60*1000));
-        document.cookie = "cook" + "=" + encodeURIComponent("stop") + ";expires=" + expires.toGMTString();
+        document.cookie = "cookfin" + "=" + encodeURIComponent("stop") + ";expires=" + expires.toGMTString();
     }   
    
 });
@@ -80,7 +80,6 @@ $(document).ready(function()
                             <h1>Projet tuteuré </h1>
                             <p>Université Lyon I - Accueil étudiant - Semestre  <?php echo $this->session->userdata('semestre') ?> - <?php echo $this->session->userdata('nom') ?> <?php echo $this->session->userdata('prenom') ?> - <a href="<?php echo site_url('Login/deconnexion') ;?>">Déconnexion</a></p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -101,21 +100,16 @@ $(document).ready(function()
                                 <p>Gestion groupe</p>
                             </a>
                         </div>
-                        <div class="menu-item blue">
-                            <a href="<?php echo ''.base_url(). 'Etudiant/listeProjet' ;?>" data-toggle="modal">
-								<i class="fa fa-bars"></i>
-                                <p>Liste de projets disponibles </p>
-                            </a>
-                        </div>
+                        
                         
                         <div class="menu-item green">
-                            <a href="<?php echo ''.base_url(). 'Etudiant/voirDemande' ;?>" data-toggle="modal">
+                            <a href="<?php echo ''.base_url(). 'Etudiant/notreProjet' ;?>" data-toggle="modal">
                                 <i class="fa fa-file-text-o"></i>
-                                <p>Mes projets demandés</p>
+                                <p>Mon projet</p>
                             </a>
                         </div>
                         
-                        
+                       
                         
                     </div>
                     
@@ -151,20 +145,20 @@ $(document).ready(function()
                                 <div class="menu-item color responsive">
                                   
 
-                                    <a href="<?php echo ''.base_url(). 'Etudiant/proposerProjet' ;?>" data-toggle="modal">
-                                <i class="fa fa-comments"></i>
-                                <p>Proposer un projet</p>
-                            </a>
+                                      <a href="<?php echo ''.base_url(). 'Etudiant/voirNote' ;?>" data-toggle="modal">
+                                      <i class="fa fa-graduation-cap"></i>
+
+                                        <p>Notes</p>
+                                    </a>
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
                                 <div class="menu-item light-orange responsive-2">
-                                    <a href="<?php echo ''.base_url(). 'Etudiant/voirNote' ;?>" data-toggle="modal">
-                                      <i class="fa fa-graduation-cap"></i>
-
-                                        <p>Notes</p>
-                                    </a>
+                                   <a data-toggle="modal" data-toggle="modal" data-target="#contactmodal" data-whatever="@getbootstrap">
+                                <i class="fa fa-envelope-o"></i>
+                                <p>Contact</p>
+                            </a>
                                 </div>
                             </div>
                             
@@ -187,13 +181,7 @@ $(document).ready(function()
                                         <p>Gallerie</p>
                                     </a>
                         </div>
-                        
-                        <div class="menu-item blue">
-                           <a data-toggle="modal" data-toggle="modal" data-target="#contactmodal" data-whatever="@getbootstrap">
-                                <i class="fa fa-envelope-o"></i>
-                                <p>Contact</p>
-                            </a>
-                        </div>
+                       
                         
                     </div>
                 </div>
@@ -210,14 +198,14 @@ $(document).ready(function()
             
           <!-- le titre de la popup --> 
           <div class="modal-header"> 
-          <h4 class="modal-title" id="titrePopUp">Choix de projets tuteurés
+          <h4 class="modal-title" id="titrePopUp">Faire son projet tuteuré
           <!-- lla croix de fermeture de la popup --> 
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> </h4>
           </div> 
           
           <!-- le contenu HTML de la popup --> 
           <div class="modal-body"> 
-          <p class="lead"> Votre groupe doit avoir choisi un projet avant le xx/xx/2016. Aprés ce délais tout retard sera sanctionné </p> 
+          <p class="lead"> Vous devez rendre votre projet avant le : xx/xx/2016 </p> 
            
 
             <div class="panel-group" id="accordion">
@@ -231,7 +219,7 @@ $(document).ready(function()
     </div>
     <div id="collapseOne" class="panel-collapse collapse in">
       <div class="panel-body">
-La première étapes est de vous trouver un groupe de projet tuteuré grâce au module "Gestion de groupe"      </div>
+La première étape est de vous trouver un groupe de projet tuteuré grâce au module "Gestion de groupe"      </div>
     </div>
   </div>
   <div class="panel panel-default">

@@ -15,6 +15,9 @@ class Etudiant extends CI_Controller
           $this->load->model('login_model');
           $this->load->model('infoUser_model');
           $this->load->model('projet_model');
+          $this->load->model('groupe_model');
+          $this->load->model('etu_models');
+
 
 
      }
@@ -25,7 +28,7 @@ class Etudiant extends CI_Controller
 
 			if($this->session->userdata('username') == true)
 				{
-							
+	
 						$query = $this->infoUser_model->get_Groupe();
 
 						foreach($query->result() as $ligne)
@@ -121,9 +124,8 @@ class Etudiant extends CI_Controller
 
 						if($result != '0')
 						{
-								 
-									
-								  $this->load->view('viewNote');		
+								  $data['results'] = $this->groupe_model->get_note_demande();
+								  $this->load->view('viewNote',$data);		
 						}
 						else
 						{ 
@@ -253,7 +255,138 @@ class Etudiant extends CI_Controller
 				}
                     
      }
-	      
+
+     function gestionGroupe()
+     {
+
+	$this->load->library('session');
+
+			if($this->session->userdata('username') == true)
+				{
+							
+						$query = $this->infoUser_model->get_Groupe();
+
+						foreach($query->result() as $ligne)
+                         {
+                              $result = $ligne->numGroupePtut;
+                         }
+
+						if($result != '0')
+						{
+
+								$data['infoGroupe'] = $this->groupe_model->infoGroupe($result);
+								$data['MembreGroupe'] = $this->groupe_model->membreGroupe($result);
+								$this->load->view('viewAvecGroupe',$data);		
+
+						}
+						else
+						{
+								  $this->load->view('viewSansGroupe');		
+
+						}
+
+					
+						
+				}
+			else
+				{
+				                    redirect('login/index');
+
+				}
+
+}
+
+   function creerGroupe()
+     {
+
+	$this->load->library('session');
+
+			if($this->session->userdata('username') == true)
+				{
+						
+            		  $groupe = $this -> input -> post("groupe");
+            		  $query = $this->groupe_model->creer_Groupe($groupe);
+				      redirect('Etudiant/gestionGroupe');
+
+				}
+			else
+				{
+				                    redirect('login/index');
+
+				}
+
+		}
+
+		 function quitterGroupe()
+     {
+
+	$this->load->library('session');
+
+			if($this->session->userdata('username') == true)
+				{
+						
+            		  $query = $this->groupe_model->quitterGroupe();
+            		  redirect('Etudiant/gestionGroupe');
+
+
+				}
+			else
+				{
+				                    redirect('login/index');
+
+				}
+
+		}
+
+	function addMembre()
+	{
+		if($this->session->userdata('username') == true)
+				{
+					 $num = $this -> input -> post("nom");
+            		  $query = $this->groupe_model->addMembre($num);
+            		  redirect('Etudiant/gestionGroupe');
+
+
+				}
+			else
+				{
+				                    redirect('login/index');
+
+				}
+
+	}
+
+	function notreProjet()
+	{
+		if($this->session->userdata('username') == true)
+				{
+						 $data['results'] = $this->projet_model->get_projet_groupe();
+						  $this->load->view('viewNotreProjet',$data);
+
+				}
+			else
+				{
+				                    redirect('login/index');
+
+				}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 ?>

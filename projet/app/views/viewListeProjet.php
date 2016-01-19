@@ -34,7 +34,7 @@
               
               <ul>
                               <li><a href="" id="portfolio-link" ><span class="icon fa-user">Liste projets</span></a></li>
-                <li><a href="<?php echo ''.base_url(). 'Accueil' ;?>" id="top-link" ><span class="icon fa-users">Accueil</span></a></li>
+                 <li><a href="<?php echo ''.base_url(). 'Accueil' ;?>" id="top-link" ><span class="icon fa-home">Accueil</span></a></li>
               
               </ul>
             </nav>
@@ -49,6 +49,8 @@
         <!-- Intro -->
           <section id="top" class="three">
             <div class="container">
+                        <h3>Les projets disponibles</h3>        
+
             <?php echo $this->session->flashdata('msgg'); ?><br><br>
 <center>
              <table class="default">
@@ -71,7 +73,8 @@
                     <td><a class="fa fa-check" href="<?php echo ''.base_url(). 'Etudiant/demanderProjet/'.$row->numProjet.'';?>"></a></td>
                   </tr><?php }} ?>
                </table>
-     </center>
+     </center>        <br><br>         
+
 
             </div>
           </section>
@@ -85,7 +88,7 @@
 
         <!-- Copyright -->
           <ul class="copyright">
-            <li>&copy;Site factice pour un projet</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>&copy;Site factice pour un projet</li>
           </ul>
 
       </div>

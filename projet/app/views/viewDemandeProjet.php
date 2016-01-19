@@ -34,7 +34,7 @@
               
               <ul>
                               <li><a href="" id="portfolio-link" ><span class="icon fa-user">Liste projets</span></a></li>
-                <li><a href="<?php echo ''.base_url(). 'Accueil' ;?>" id="top-link" ><span class="icon fa-users">Accueil</span></a></li>
+                 <li><a href="<?php echo ''.base_url(). 'Accueil' ;?>" id="top-link" ><span class="icon fa-home">Accueil</span></a></li>
               
               </ul>
             </nav>
@@ -85,7 +85,7 @@
 
         <!-- Copyright -->
           <ul class="copyright">
-            <li>&copy;Site factice pour un projet</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>&copy;Site factice pour un projet</li>
           </ul>
 
       </div>

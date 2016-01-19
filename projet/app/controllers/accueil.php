@@ -15,6 +15,7 @@ class Accueil extends CI_Controller
           $this->load->model('login_model');
           $this->load->model('infoUser_model');
           $this->load->model('projet_model');
+          $this->load->model('groupe_model');
 
      }
  
@@ -32,18 +33,34 @@ class Accueil extends CI_Controller
 							else
 							{
 								
-		 	$query = $this->infoUser_model->get_Groupe();
+								$query = $this->infoUser_model->get_Groupe();
 
-						foreach($query->result() as $ligne)
-                         {
-                              $result = $ligne->numGroupePtut;
-                         }
+								foreach($query->result() as $ligne)
+			                       {
+			                              $result = $ligne->numGroupePtut;
+			                       }
 
-						if($result != '0')
-						{
-						  $this->session->set_userdata('groupe', $result);
-						 }
-											     $this->load->view('viewetu');
+									if($result != '0')
+									{
+									  $this->session->set_userdata('groupe', $result);
+									}
+
+									$querys = $this->groupe_model->get_GroupeSujet($result);
+									foreach($querys->result() as $ligne)
+			                      	 {
+			                              $result = $ligne->possedeSujet;
+			                       	 }
+
+
+			                       	 if ($result == 1)
+			                       	 {
+									$this->load->view('viewetufin');
+
+			                       	 }
+			                       	 else
+			                       	 {
+			                       	 	$this->load->view('viewetu');
+			                       	 }
 
 							}
 				}

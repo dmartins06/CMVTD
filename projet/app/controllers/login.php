@@ -14,6 +14,8 @@ class login extends CI_Controller
           $this->load->library('form_validation');
           $this->load->model('login_model');
           $this->load->model('infoUser_model');
+                    $this->load->model('etu_models');
+
 
      }
 
@@ -44,19 +46,21 @@ class login extends CI_Controller
                     
 				 if ($usr_resultetu > 0) 
                     {
-                            
 						$this->session->set_userdata('username', $username);
 						$this->session->set_userdata('loginuser', TRUE);
 						$this->session->set_userdata('prof', FALSE);
+
                          $query = $this->infoUser_model->get_infouser($username, $password);
                          foreach($query->result() as $ligne)
                          {
                               $this->session->set_userdata('prenom',$ligne->prenomEtudiant);
                               $this->session->set_userdata('nom',$ligne->nomEtudiant);
+                              $this->session->set_userdata('semestre', $ligne->Semestre);
+
                          }
                          redirect("Accueil");
                     }
-                 else if ($usr_resultprof > 0)
+                    else if ($usr_resultprof > 0)
                     {
                         
 						 $this->session->set_userdata('username', $username);
@@ -84,4 +88,9 @@ class login extends CI_Controller
 			$this->session->sess_destroy();
 			redirect('login/index');
 	 }
+
+
+
+
+
 }?>
