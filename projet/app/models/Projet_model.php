@@ -81,7 +81,7 @@ class projet_model extends CI_Model
    
    function get_projet_groupe()
    {
-     $sql = "SELECT * FROM PROJET WHERE numGroupePtut = '".$this->session->userdata('groupe')."'";
+     $sql = "SELECT * FROM PROJET WHERE propositionSujet = '0' and numGroupePtut = '".$this->session->userdata('groupe')."'";
          $query = $this->db->query($sql);
 
         if($query->num_rows() >0)

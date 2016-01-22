@@ -64,7 +64,7 @@
                   </tr>
                     <tr>
                                             <th>Grille de notation</th>
-                                            <td><a href="<?php echo $row->URL; ?>" class="fa fa-cloud-download"></a>
+                                            <td><a href=".\..\..\uploads\<?php echo $row->URL; ?>" class="fa fa-cloud-download"></a>
 </td>
                     </tr>
 
