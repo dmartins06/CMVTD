@@ -51,7 +51,7 @@
            <div style="border:groove">
 
                     <form action="<?php echo ''.base_url(). 'Etudiant/creerGroupe' ;?>" method="post">
-                            <p>Vous pouvez creer votre groupe vous même, ou attendre qu'un de vos camarade vous ajoute au siens :</p>
+                            <p>Vous pouvez créer votre groupe vous même, ou attendre qu'un de vos camarades vous ajoute au sien :</p>
                             <label><center>Nom du groupe à créer :</center></label>          
                         <input type="groupe" name="groupe" /> <br>    <br>   
                   <input type="submit" value="Creer son groupe" name="valider" />

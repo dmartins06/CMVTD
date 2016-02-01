@@ -104,7 +104,7 @@ $(document).ready(function()
                         <div class="menu-item blue">
                             <a href="<?php echo ''.base_url(). 'Etudiant/listeProjet' ;?>" data-toggle="modal">
 								<i class="fa fa-bars"></i>
-                                <p>Liste de projets disponibles </p>
+                                <p>Liste des projets disponibles </p>
                             </a>
                         </div>
                         
@@ -217,7 +217,7 @@ $(document).ready(function()
           
           <!-- le contenu HTML de la popup --> 
           <div class="modal-body"> 
-          <p class="lead"> Votre groupe doit avoir choisi un projet avant le xx/xx/2016. Aprés ce délais tout retard sera sanctionné </p> 
+          <p class="lead"> Votre groupe doit avoir choisi un projet avant le xx/xx/2016. Aprés ce délai tout retard sera sanctionné </p> 
            
 
             <div class="panel-group" id="accordion">
@@ -231,7 +231,7 @@ $(document).ready(function()
     </div>
     <div id="collapseOne" class="panel-collapse collapse in">
       <div class="panel-body">
-La première étapes est de vous trouver un groupe de projet tuteuré grâce au module "Gestion de groupe"      </div>
+La première étape est de vous trouver un groupe de projet tuteuré grâce au module "Gestion de groupe"      </div>
     </div>
   </div>
   <div class="panel panel-default">

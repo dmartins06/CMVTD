@@ -89,7 +89,7 @@
                   <div style="border:groove">
 
                  <form action="<?php echo '' . base_url() . 'Etudiant/addMembre';?>" method="post">
-                     Ajouter un membre:<br>
+                     Ajouter un membre (numéro étudiant) :<br>
                     <input type="user" name="nom" /><br><br>
                     <input type="submit" value="Valider" name="inscription" /><br>
                     </br></form>
