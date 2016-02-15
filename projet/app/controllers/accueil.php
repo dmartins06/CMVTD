@@ -19,6 +19,7 @@ class Accueil extends CI_Controller
 
      }
  
+ //Fonction d'accueil : Redirige vers la page de connection si la variable session n'existe pas, sinon redirige vers la page correspondant
      public function index()
 	 {
 		 	$this->load->library('session');
@@ -26,13 +27,7 @@ class Accueil extends CI_Controller
 
 			if($this->session->userdata('username') == true)
 				{
-							if($this->session->userdata('prof') == true)
-							{
-			  								     $this->load->view('viewprof');
-							}
-							else
-							{
-								
+							
 								$query = $this->infoUser_model->get_Groupe();
 
 								foreach($query->result() as $ligne)
@@ -40,11 +35,9 @@ class Accueil extends CI_Controller
 			                              $result = $ligne->numGroupePtut;
 			                       }
 
-									if($result != '0')
-									{
-									  $this->session->set_userdata('groupe', $result);
-									}
-
+								
+									  $this->session->set_userdata('groupe', $result); //Vaut 0 si il n'a pas de groupe
+									
 									$querys = $this->groupe_model->get_GroupeSujet($result);
 									foreach($querys->result() as $ligne)
 			                      	 {
@@ -52,17 +45,16 @@ class Accueil extends CI_Controller
 			                       	 }
 
 
-			                       	 if ($result == 1)
+			                       	 if ($result == 1) //Si l'utilisateur a déja un sujet valider
 			                       	 {
-									$this->load->view('viewetufin');
-
+										$this->load->view('etudiant/viewetufin'); 
 			                       	 }
-			                       	 else
+			                       	 else //Si il n'a pas encore de projet valider
 			                       	 {
-			                       	 	$this->load->view('viewetu');
+			                       	 	$this->load->view('etudiant/viewetu');
 			                       	 }
 
-							}
+							
 				}
 			else
 				{

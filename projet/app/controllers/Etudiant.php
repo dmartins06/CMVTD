@@ -16,7 +16,6 @@ class Etudiant extends CI_Controller
           $this->load->model('infoUser_model');
           $this->load->model('projet_model');
           $this->load->model('groupe_model');
-          $this->load->model('etu_models');
 
 
 
@@ -29,16 +28,9 @@ class Etudiant extends CI_Controller
 			if($this->session->userdata('username') == true)
 				{
 	
-						$query = $this->infoUser_model->get_Groupe();
-
-						foreach($query->result() as $ligne)
-                         {
-                              $result = $ligne->numGroupePtut;
-                         }
-
-						if($result != '0')
+					$numGroupe = $this->session->userdata('groupe');
+						if($numGroupe != '0')
 						{
-								 $this->session->set_userdata('groupe', $result);
 								$projet = $this->projet_model->get_projet_rentre();
 								foreach($projet->result() as $ligne)
                                 {
@@ -47,9 +39,9 @@ class Etudiant extends CI_Controller
 								if ($result != 0) 
 									{
 										$data['results'] = $this->projet_model->get_projet_proposer();
-										$this->load->view('viewProjetProposer',$data);
+										$this->load->view('etudiant/viewProjetProposer',$data);
 									}
-								 else  $this->load->view('viewProposerProjet');		
+								 else  $this->load->view('etudiant/viewProposerProjet');		
 						}
 						else
 						{
@@ -76,16 +68,10 @@ class Etudiant extends CI_Controller
 			if($this->session->userdata('username') == true)
 				{
 							
-						$query = $this->infoUser_model->get_Groupe();
+						$numGroupe = $this->session->userdata('groupe');
 
-						foreach($query->result() as $ligne)
-                         {
-                              $result = $ligne->numGroupePtut;
-                         }
-
-						if($result != '0')
+						if($numGroupe  != '0')
 						{
-						  $this->session->set_userdata('groupe', $result);
 						  $this->projet_model->demande_projet($projet);
 						  $this->session->set_flashdata('msgg', '<div class="alert alert-danger text-center">La demande à bien été enregistrer, vous pouvez la voir dans l onglet "Mes Demandes".</div>');
 					     redirect('Etudiant/listeProjet');
@@ -115,17 +101,13 @@ class Etudiant extends CI_Controller
 			if($this->session->userdata('username') == true)
 				{
 							
-						$query = $this->infoUser_model->get_DroitNote();
+										$numGroupe = $this->session->userdata('groupe');
 
-						foreach($query->result() as $ligne)
-                         {
-                              $result = $ligne->voirNote;
-                         }
 
-						if($result != '0')
+						if($numGroupe  != '0')
 						{
 								  $data['results'] = $this->groupe_model->get_note_demande();
-								  $this->load->view('viewNote',$data);		
+								  $this->load->view('etudiant/viewNote',$data);		
 						}
 						else
 						{ 
@@ -173,7 +155,7 @@ class Etudiant extends CI_Controller
 				{
 
 				 $data['results'] = $this->projet_model->get_projet_dispo();
-				 $this->load->view('viewListeProjet',$data);
+				 $this->load->view('etudiant/viewListeProjet',$data);
 
 				}
 			else
@@ -197,7 +179,7 @@ class Etudiant extends CI_Controller
 						if($query > 0)
 						{
 						  $data['results'] = $this->projet_model->get_projet_demande();
-						  $this->load->view('viewDemandeProjet',$data);
+						  $this->load->view('etudiant/viewDemandeProjet',$data);
 
 						}
 						else
@@ -225,14 +207,9 @@ class Etudiant extends CI_Controller
 			if($this->session->userdata('username') == true)
 				{
 							
-						$query = $this->infoUser_model->get_Groupe();
+						$numGroupe = $this->session->userdata('groupe');
 
-						foreach($query->result() as $ligne)
-                         {
-                              $result = $ligne->numGroupePtut;
-                         }
-
-						if($result != '0')
+						if($numGroupe != '0')
 						{
 						  $this->session->set_userdata('groupe', $result);
 						  $this->projet_model->demande_projet($projet);
@@ -264,24 +241,20 @@ class Etudiant extends CI_Controller
 			if($this->session->userdata('username') == true)
 				{
 							
-						$query = $this->infoUser_model->get_Groupe();
+					$numGroupe = $this->session->userdata('groupe');
 
-						foreach($query->result() as $ligne)
-                         {
-                              $result = $ligne->numGroupePtut;
-                         }
 
-						if($result != '0')
+						if($numGroupe != '0')
 						{
 
-								$data['infoGroupe'] = $this->groupe_model->infoGroupe($result);
-								$data['MembreGroupe'] = $this->groupe_model->membreGroupe($result);
-								$this->load->view('viewAvecGroupe',$data);		
+								$data['infoGroupe'] = $this->groupe_model->infoGroupe($numGroupe);
+								$data['MembreGroupe'] = $this->groupe_model->membreGroupe($numGroupe);
+								$this->load->view('etudiant/viewAvecGroupe',$data);		
 
 						}
 						else
 						{
-								  $this->load->view('viewSansGroupe');		
+								  $this->load->view('etudiant/viewSansGroupe');		
 
 						}
 
@@ -326,8 +299,8 @@ class Etudiant extends CI_Controller
 				{
 						
             		  $query = $this->groupe_model->quitterGroupe();
+					$this->session->set_userdata('groupe', '0');
             		  redirect('Etudiant/gestionGroupe');
-
 
 				}
 			else
@@ -361,7 +334,7 @@ class Etudiant extends CI_Controller
 		if($this->session->userdata('username') == true)
 				{
 						 $data['results'] = $this->projet_model->get_projet_groupe();
-						  $this->load->view('viewNotreProjet',$data);
+						  $this->load->view('etudiant/viewNotreProjet',$data);
 
 				}
 			else

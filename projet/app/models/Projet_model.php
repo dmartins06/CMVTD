@@ -10,6 +10,7 @@ class projet_model extends CI_Model
           parent::__construct();
      }
 
+    //Retourne 1 si le groupe a proposé un projet, 0 sinon
      function get_projet_rentre()
      {
           $sql = "SELECT proposeProjet FROM GROUPE WHERE numGroupePtut = '" .$this->session->userdata('groupe'). "'";
@@ -17,6 +18,7 @@ class projet_model extends CI_Model
           return $query;
     }
 
+    //Permet de proposé un projet pour le groupe avec les infos passé en parametres
      function rentre_projet($nom,$description)
      {
           $sql = "INSERT INTO PROJET (nomProjet,descriptionProjet,propositionSujet,numGroupePtut,Semestre) VALUES('".$nom."','".$description."','1','".$this->session->userdata('groupe')."','".$this->session->userdata('semestre')."')";
@@ -26,7 +28,7 @@ class projet_model extends CI_Model
     }
       
 	 
-
+  //Récupere le projet proposé par le groupe
 	function get_projet_proposer()
     {
          $sql = "SELECT nomProjet,descriptionProjet,Etat FROM PROJET WHERE propositionSujet = '1' AND numGroupePtut = '" .$this->session->userdata('groupe'). "'";
@@ -39,6 +41,7 @@ class projet_model extends CI_Model
         } 
     }
 
+    //Récupere les projets disponible pour l'étudiant (Avec criteres, pas déja choisis, meme semestre etc)
     function get_projet_dispo()
     {
 
@@ -60,12 +63,14 @@ class projet_model extends CI_Model
         } 
     }
 
+    //Demande le projet passé en parametre pour le groupe de l'étudiant
     function demande_projet($projet)
    {
           $sql = "INSERT INTO DEMANDEPROJET (numGroupe,numProjet,numEtudiant) VALUES('".$this->session->userdata('groupe')."','".$projet."','".$this->session->userdata('username')."')";
           $query = $this->db->query($sql);
     }
    
+   //Recupere la liste des projets demandé par le groupe de l'étudiant
    function get_projet_demande()
    {
       $sql = "SELECT nomProjet,descriptionProjet,etatDemande,numEtudiant FROM PROJET,DEMANDEPROJET WHERE  PROJET.numProjet = DEMANDEPROJET.numProjet AND (DEMANDEPROJET.numGroupe =  '".$this->session->userdata('groupe')."')";
@@ -78,7 +83,7 @@ class projet_model extends CI_Model
         } 
    }
 
-   
+   //Récupere le projet valide pour un groupe
    function get_projet_groupe()
    {
      $sql = "SELECT * FROM PROJET WHERE propositionSujet = '0' and numGroupePtut = '".$this->session->userdata('groupe')."'";
