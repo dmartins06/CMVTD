@@ -93,6 +93,9 @@ class groupe_model extends CI_Model
         }
         
     }
+
+   
+    
     
     //Fonction qui ajoute un membre dans le groupe de l'utilisateur qui effectue l'action grâce a son numéro d'étudiant
     //Met les erreur en variables flashdata pour les afficher a l'actualisation automatique de la page 

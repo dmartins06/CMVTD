@@ -18,6 +18,15 @@ class login_model extends CI_Model
           return $query->num_rows();
      }
 
+
+     function get_prof($usr, $pwd)
+     {
+          $sql = "select * from UTILISATEUR where numeroLogin = '" . $usr . "' and password = '" . md5($pwd) . "' and statut= 'professeur'";
+          $query = $this->db->query($sql);
+          return $query->num_rows();
+     }
+
+
      //Fonction pour voir si la session username est crée
      function isLoggedIn(){
           if($this->session->userdata('username'))

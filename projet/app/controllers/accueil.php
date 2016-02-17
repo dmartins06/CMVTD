@@ -25,7 +25,7 @@ class Accueil extends CI_Controller
 		 	$this->load->library('session');
 
 
-			if($this->session->userdata('username') == true)
+			if($this->session->userdata('loginuser') == true)
 				{
 							
 								$query = $this->infoUser_model->get_Groupe();

@@ -58,14 +58,14 @@
                   <!-- The user image in the navbar-->
                   <img src="<?php echo ''.base_url(). 'assets/img/avatar2.png';?>" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">Amélie Cordier</span>
+                  <span class="hidden-xs"><?php echo $this->session->userdata('username') ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="<?php echo ''.base_url(). 'assets/img/avatar2.png';?>" class="img-circle" alt="User Image">
                     <p>
-                      Amélie Cordier - Professeur
+                      <?php echo $this->session->userdata('username') ?> - Professeur
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -83,15 +83,12 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Déconnexion</a>
+                      <a href="<?php echo site_url('Login/deconnexion') ;?>" class="btn btn-default btn-flat">Déconnexion</a>
                     </div>
                   </li>
                 </ul>
               </li>
-              <!-- Control Sidebar Toggle Button -->
-              <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
+             
             </ul>
           </div>
         </nav>
@@ -108,7 +105,7 @@
               <img src="<?php echo ''.base_url(). 'assets/img/avatar2.png';?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Amélie Cordier</p>
+              <p><?php echo $this->session->userdata('username') ?></p>
             </div>
           </div>
 
@@ -117,14 +114,14 @@
           <ul class="sidebar-menu">
             <li class="header">ACTIONS</li>
             <!-- Optionally, you can add icons to the links -->
-			<li class="active"><a href="#"><i class="fa fa-info"></i> <span>Informations</span></a></li>
-            <li class="treeview"><a href="#"><i class="fa fa-plus"></i> <span>Ajouter projet</span></a></li>
-            <li><a href="#"><i class="fa fa-users"></i> <span>Liste des groupes</span></a></li>
+			<li class="active"><a href="<?php echo ''.base_url(). 'IndProf' ;?>"><i class="fa fa-info"></i> <span>Informations</span></a></li>
+            <li class="treeview"><a href="<?php echo ''.base_url(). 'IndProf/addProject' ;?>"><i class="fa fa-plus"></i> <span>Ajouter projet</span></a></li>
+            <li><a href="<?php echo ''.base_url(). 'IndProf/listeGroupe' ;?>"><i class="fa fa-users"></i> <span>Liste des groupes</span></a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-list"></i> <span>Gestion projets</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#">Mes projets</a></li>
-                <li><a href="#">Demande de projet</a></li>
+                <li><a href="<?php echo ''.base_url(). 'IndProf/myProject' ;?>">Mes projets</a></li>
+                <li><a href="<?php echo ''.base_url(). 'IndProf/listeDemandes' ;?>">Demande de projet</a></li>
               </ul>
             </li>
 			<li><a href="#"><i class="fa fa-envelope"></i> <span>Contact</span></a></li>
@@ -200,68 +197,7 @@
         <strong>Copyright &copy; 2016  <a href="#">IUT Informatique Lyon 1</a></strong>
       </footer>
 
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <!-- Home tab content -->
-          <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript::;">
-                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                  <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                    <p>Will be 23 on April 24th</p>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- /.control-sidebar-menu -->
-
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript::;">
-                  <h4 class="control-sidebar-subheading">
-                    Custom Template Design
-                    <span class="label label-danger pull-right">70%</span>
-                  </h4>
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- /.control-sidebar-menu -->
-			
-
-          </div><!-- /.tab-pane -->
-          <!-- Stats tab content -->
-          <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
-          <!-- Settings tab content -->
-          <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-              <h3 class="control-sidebar-heading">General Settings</h3>
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Report panel usage
-                  <input type="checkbox" class="pull-right" checked>
-                </label>
-                <p>
-                  Some information about this general settings option
-                </p>
-              </div><!-- /.form-group -->
-            </form>
-          </div><!-- /.tab-pane -->
-        </div>
-      </aside><!-- /.control-sidebar -->
-
-      <div class="control-sidebar-bg"></div>
+     
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->

@@ -41,13 +41,15 @@ class login extends CI_Controller
                {
                     //check if username and password is correct
 				$usr_resultetu = $this->login_model->get_etu($username, $password);
+        $usr_resultprof = $this->login_model->get_prof($username, $password);
+
 
                     
 				 if ($usr_resultetu > 0) 
                     {
-					            	$this->session->set_userdata('username', $username);
-					             	$this->session->set_userdata('loginuser', TRUE);
-					             	$this->session->set_userdata('prof', FALSE);
+							$this->session->set_userdata('username', $username);
+							$this->session->set_userdata('loginuser', TRUE);
+							$this->session->set_userdata('prof', FALSE);
 
                          $query = $this->infoUser_model->get_infouser($username, $password);
                          foreach($query->result() as $ligne)
@@ -58,6 +60,15 @@ class login extends CI_Controller
                          }
                          redirect("Accueil");
                     
+                    }
+                    else if ($usr_resultprof > 0)
+                    {
+                        $this->session->set_userdata('username', $username);
+                        $this->session->set_userdata('loginuser', TRUE);
+                        $this->session->set_userdata('prof', TRUE);
+                      
+                         redirect("Indprof");
+
                     }
                     else
                     {
@@ -77,22 +88,7 @@ class login extends CI_Controller
 			$this->session->sess_destroy();
 			redirect('login/index');
 	 }
-	 
-	  public function test()
-	 {
-		                $this->load->view('admin/viewAjouterProjet');
-	 }
-
-
-	  public function test2()
-	 {
-		                $this->load->view('admin/viewInformations');
-	 }
-
-	   public function test3()
-	 {
-		                $this->load->view('admin/viewListeGroupe');
-	 }
+	
 
 
 

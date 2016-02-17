@@ -97,4 +97,44 @@ class projet_model extends CI_Model
 
    }
 
+    //Fonction qui récupere tout les projets existants
+    function getAllProject()
+    {
+        
+        $sql = "SELECT * FROM PROJET";
+        $query = $this->db->query($sql);
+        if($query->num_rows() >0)
+        {
+            $row=$query->result();
+            return $row;
+        }
+        
+    }
+
+    function propose_projet($nom,$description,$semestre)
+    {
+
+
+        $sql = "SELECT numGroupeTuteur FROM GROUPETUTEUR";
+        $query = $this->db->query($sql);
+        if($query->num_rows() >0)
+        {
+            $results=$query->result();
+        }
+
+        if($results != null){
+                foreach($results as $row){
+                  $numGroupeTuteur = $row->numGroupeTuteur;
+                }
+
+              }
+
+  
+       $sql = "INSERT INTO PROJET (nomProjet,descriptionProjet,numGroupeTuteur,Semestre) VALUES('".$nom."','".$description."','".$numGroupeTuteur."','".$semestre."')";
+       $query = $this->db->query($sql);
+  
+
+
+    }
+
 }?>
